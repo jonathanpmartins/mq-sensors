@@ -12,8 +12,8 @@ public:
 
   float intToFloat(int value) { return static_cast<float>(value); }
 
-  float ajustVoltageDividerSignal(float value, float fromVolts, float toVolts,
-                                  int resistor1InOhms, int resistor2InOhms) {
+  float adjustVoltageDividerSignal(float value, float fromVolts, float toVolts,
+                                   int resistor1InOhms, int resistor2InOhms) {
 
     float voltageRatio = toVolts / fromVolts;
 
