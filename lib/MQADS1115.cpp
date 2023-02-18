@@ -1,7 +1,8 @@
+#include "ADS1X15.h"
 #include <Arduino.h>
 #include <iostream>
 
-#include "ADS1X15.h"
+#pragma once
 
 class MQADS1115 {
   volatile bool RDY;

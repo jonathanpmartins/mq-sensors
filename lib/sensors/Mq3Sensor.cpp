@@ -1,14 +1,15 @@
-#include "Sensor.cpp"
+#include "../MQADS1115.cpp"
+#include "ADS1X15.h"
 
-class Mq3Sensor : public Sensor {
+class Mq3Sensor {
+  MQADS1115 *ads;
+  uint8_t channel;
+
 public:
-  Mq3Sensor(float signal) : Sensor(signal) {}
-
-  void toSerial() {
-    float mapped = map(signal, 0, samples - 1, 5, 1000);
-    Serial.print(" MQ3: " + String(signal) + " - ");
-    Serial.print(" " + String(mapped / 100) + "(Alcohol gas)");
-
-    Serial.println("");
+  Mq3Sensor(MQADS1115 *a, uint8_t c) {
+    this->ads = a;
+    this->channel = c;
   }
+
+  uint16_t getValue() { return this->ads->getChannelValue(channel); }
 };

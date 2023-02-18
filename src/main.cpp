@@ -1,4 +1,6 @@
 #include "../lib/MQADS1115.cpp"
+#include "../lib/sensors/Mq3Sensor.cpp"
+#include "ADS1X15.h"
 #include <Arduino.h>
 #include <Wire.h>
 #include <esp_task_wdt.h>
@@ -12,22 +14,32 @@ TaskHandle_t CPU1;
 MQADS1115 *MQADS1115::instances[3] = {NULL, NULL, NULL};
 
 MQADS1115 ads0(0, 0x48, 4);
+Mq3Sensor mq3(&ads0, 1);
 
 void loop0() {
-  for (int i = 0; i < 4; i++) {
 
-    uint16_t value = ads0.getChannelValue(i);
+  Serial.println(mq3.getValue());
 
-    if (i > 0) {
-      Serial.print("     ");
-    }
-    Serial.print("[");
-    Serial.print(i);
-    Serial.print("]: ");
-    Serial.print(value);
-  }
+  // mq3.getValue();
 
-  Serial.println("");
+  // //
+
+  // // uint16_t value = ads0.getChannelValue(i);
+
+  // for (int i = 0; i < 4; i++) {
+
+  //   uint16_t value = ads0.getChannelValue(i);
+
+  //   if (i > 0) {
+  //     Serial.print("     ");
+  //   }
+  //   Serial.print("[");
+  //   Serial.print(i);
+  //   Serial.print("]: ");
+  //   Serial.print(value);
+  // }
+
+  // Serial.println("");
 
   delay(500);
 }
@@ -45,8 +57,6 @@ void runTask(int cpu) {
     }
 
     esp_task_wdt_reset();
-
-    // Serial.println(uxTaskGetStackHighWaterMark(NULL)); delay(500);
   }
 }
 
