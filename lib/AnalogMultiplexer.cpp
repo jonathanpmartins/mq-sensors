@@ -3,10 +3,10 @@
 
 using namespace std;
 
-#define S0 4
-#define S1 0
-#define S2 2
-#define S3 15
+#define S0 25
+#define S1 26
+#define S2 27
+#define S3 14
 
 class AnalogMultiplexer {
 public:
