@@ -18,7 +18,9 @@ Mq3Sensor mq3(&ads0, 1);
 
 void loop0() {
 
-  Serial.println(mq3.getValue());
+  // Serial.println(mq3.getValue());
+  // Serial.println(mq3.getValue());
+  // Serial.println(mq3.getValue());
 
   // mq3.getValue();
 
@@ -38,6 +40,8 @@ void loop0() {
   //   Serial.print("]: ");
   //   Serial.print(value);
   // }
+
+  mq3.loop();
 
   // Serial.println("");
 
@@ -69,6 +73,7 @@ void setup() {
     ;
 
   ads0.setup();
+  mq3.setup();
 
   const int stackSize = 32768;
 

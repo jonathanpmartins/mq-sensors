@@ -52,6 +52,8 @@ public:
 
   void adsReady() { RDY = true; }
 
+  bool isConnected() { return ads.isConnected(); }
+
   void setup() {
     ads.begin();
     ads.setGain(0);     // 6.144 volt
